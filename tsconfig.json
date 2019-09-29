@@ -16,5 +16,11 @@
     "jsx": "preserve",
     "noImplicitAny": false
   },
-  "include": ["src/front-end", "src/index.tsx"]
+  "include": [
+    "src/",
+    "src/index.tsx",
+    "src/store",
+    "src/components",
+    "src/serviceWorker.ts"
+  ]
 }
