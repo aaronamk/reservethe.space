@@ -1,0 +1,53 @@
+swagger: '2.0'
+info:
+  title: Reserve the Space
+  version: 0.1.0
+host: api.reservethe.space
+basePath: /v1
+schemes:
+  - http
+  - https
+consumers:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/authenticate/{id}':
+    get:
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not OK
+  '/users/{id}':
+    get:
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              username:
+                type: string
+              reservations:
+                type: array
+                items:
+                  type: object
+                  properties:
+
+  /reservation:
+    put:
+    post:
+    delete:

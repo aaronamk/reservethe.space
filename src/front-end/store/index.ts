@@ -4,6 +4,7 @@ export enum ActionTypes {
   DataRequest = 'DATA_REQUEST',
   DataSuccess = 'DATA_SUCCESS',
   DataFailure = 'DATA_FAILURE',
+  SignIn = 'SIGN_IN',
 }
 
 export type Action = any;
@@ -12,8 +13,9 @@ export type State = any;
 
 const defaultState: State = {
   data: {},
-  isLoading: true,
+  isLoading: false,
   error: undefined,
+  isSignedIn: false,
 };
 
 export const rootReducer = (state = defaultState, action: Action) =>
@@ -33,6 +35,10 @@ export const rootReducer = (state = defaultState, action: Action) =>
         draft.isLoading = false;
         draft.data = action.data;
         draft.error = undefined;
+        break;
+
+      case ActionTypes.SignIn:
+        draft.isSignedIn = true;
         break;
     }
   });

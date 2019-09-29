@@ -1,46 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import logo from '../logo.svg';
-import { Action, ActionTypes, State } from '../store';
+import { Action, State } from '../store';
 import './App.scss';
+import { SignInForm } from './SignInForm';
 
 interface Props {
   isLoading: boolean;
+  isSignedIn: boolean;
   dispatch: (action: Action) => any;
 }
 
 const App = (props: Props) => {
+  const { isSignedIn, isLoading } = props;
+
   return (
     <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <span
-          onClick={
-            props.isLoading
-              ? () =>
-                  props.dispatch({ type: ActionTypes.DataSuccess, data: {} })
-              : () => props.dispatch({ type: ActionTypes.DataRequest })
-          }
-        >
-          {props.isLoading ? 'Loading!' : 'Not loading'}
-        </span>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+      {isSignedIn ? <div>Signed in!</div> : <SignInForm />}
     </div>
   );
 };
 
-const connectedComponent = connect(({ isLoading }: State) => ({ isLoading }))(
-  App
-);
+const connectedComponent = connect(({ isSignedIn, isLoading }: State) => ({
+  isSignedIn,
+  isLoading,
+}))(App);
 export { connectedComponent as App };
