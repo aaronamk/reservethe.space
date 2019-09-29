@@ -1,4 +1,4 @@
-# reserve.space
+# ReserveThe.Space
 
 A bloated hello world program. See now at reservethe.space!!
 
